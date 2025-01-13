@@ -3,7 +3,7 @@ name: Deploy GitBook to GitHub Pages
 on:
   push:
     branches:
-      - gh-pages  # 或者您使用的其他分支
+      - main  # 确保这是你的源分支
 
 jobs:
   build:
@@ -29,4 +29,7 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./_book
-        destination_dir: docs  # 如果您希望将内容放在 docs 目录
+        # 确保 destination_dir 是你想要的目录
+        # 如果不需要，可以移除 destination_dir
+        destination_dir: docs  
+        publish_branch: gh-pages  # 确保这是你的目标分支
