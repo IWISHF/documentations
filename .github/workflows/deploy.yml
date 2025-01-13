@@ -1,4 +1,3 @@
-
 name: Deploy GitBook to GitHub Pages
 
 on:
@@ -17,7 +16,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'  # 确保使用与 GitBook 兼容的 Node.js 版本
+        node-version: '8'  # 确保使用与 GitBook 兼容的 Node.js 版本
 
     - name: Install GitBook CLI
       run: npm install -g gitbook-cli
@@ -26,8 +25,8 @@ jobs:
       run: gitbook build
 
     - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_book
-          destination_dir: docs  # 如果您希望将内容放在 docs 目录
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./_book
+        destination_dir: docs  # 如果您希望将内容放在 docs 目录
